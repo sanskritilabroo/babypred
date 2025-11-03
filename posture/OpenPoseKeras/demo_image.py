@@ -226,34 +226,34 @@ def process(input_image, params, model_params,model):
 
     return canvas
 
-# if __name__ == '__main__':
-#     parser = argparse.ArgumentParser()
-#     parser.add_argument('--image', type=str, default="./sample_images/baby.jpg", help='input image')
-#     parser.add_argument('--output', type=str, default='result.png', help='output image')
-#     parser.add_argument('--model', type=str, default='./model/keras/model.h5', help='path to weights file')
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--image', type=str, default="./sample_images/baby.jpg", help='input image')
+    parser.add_argument('--output', type=str, default='result.png', help='output image')
+    parser.add_argument('--model', type=str, default='./model/keras/model.h5', help='path to weights file')
 
-#     args = parser.parse_args()
-#     input_image = args.image
-#     output = args.output
-#     keras_weights_file = args.model
+    args = parser.parse_args()
+    input_image = args.image
+    output = args.output
+    keras_weights_file = args.model
 
-#     tic = time.time()
-#     print('Start processing...')
+    tic = time.time()
+    print('Start processing...')
 
-#     # Load pose model
-#     model = get_testing_model(np_branch1=38, np_branch2=19, stages=6)
-#     model.load_weights(keras_weights_file)
+    # Load pose model
+    model = get_testing_model(np_branch1=38, np_branch2=19, stages=6)
+    model.load_weights(keras_weights_file)
 
-#     # Load config
-#     params, model_params = config_reader_colab()
+    # Load config
+    params, model_params = config_reader_colab()
 
-#     canvas = process(input_image, params, model_params)
+    canvas = process(input_image, params, model_params,model)
 
-#     # Save output
-#     cv2.imwrite(output, canvas)
-#     print(f"Saved output to: {output}")
+    # Save output
+    cv2.imwrite(output, canvas)
+    print(f"Saved output to: {output}")
 
-#     toc = time.time()
-#     print(f"Processing time: {toc - tic:.5f} seconds")
+    toc = time.time()
+    print(f"Processing time: {toc - tic:.5f} seconds")
 
-#     cv2.destroyAllWindows()
+    cv2.destroyAllWindows()
